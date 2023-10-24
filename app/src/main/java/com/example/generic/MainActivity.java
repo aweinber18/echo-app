@@ -7,9 +7,13 @@ import android.view.View;
 import com.example.generic.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText et;
+    private TextView tv;
     private ActivityMainBinding binding;
 
     @Override
@@ -24,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+
+                et = findViewById(R.id.et_input);
+                String text = et.getText().toString();
+                tv = findViewById(R.id.tv_output);
+                tv.setText(text);
+
+                Snackbar.make(view, "How 'bout that echo?", Snackbar.LENGTH_INDEFINITE)
                         .setAnchorView(R.id.fab)
                         .setAction("Action", null).show();
             }
